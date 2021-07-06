@@ -1,12 +1,8 @@
 // 1.	Capitulo 2 > Iniciando a API > Criando a API com NodeJS  > Criando repositóorio de categoria
 import { Category } from "../model/category";
+import { ICategoriesRepository, ICreateCategoryDTO } from "./ICategoriesRepository";
 
-interface ICreateCategoryDTO {
-    name: string;
-    description: string;
-}
-
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
     private categories: Category[];
 
     constructor() {
