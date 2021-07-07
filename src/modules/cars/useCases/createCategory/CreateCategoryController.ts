@@ -1,6 +1,6 @@
 // 1.	Capitulo 2 > Iniciando a API > Continuação da aplicação > Criando os Use Case de Categoria
 import { Request, Response } from 'express';
-import { CreateCategoryUseCase } from './CreateCategoryUserCase';
+import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 
 class CreateCategoryController {
     constructor(private createCategoryUseCase: CreateCategoryUseCase) { }

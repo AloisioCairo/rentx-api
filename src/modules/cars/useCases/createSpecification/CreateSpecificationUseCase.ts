@@ -1,12 +1,12 @@
 // 1.	Capitulo 2 > Iniciando a API > Continuação da aplicação > Criando o service de especificação e separando em modulos
-import { ISpecificationRepository } from "../repositories/ISpecificationRepository";
+import { ISpecificationRepository } from "../../repositories/ISpecificationRepository";
 
 interface IRequest {
     name: string;
     description: string;
 }
 
-class CreateSpecificationService {
+class CreateSpecificationUseCase {
     constructor(private specificationsRepository: ISpecificationRepository) { }
 
     execute({ name, description }: IRequest): void {
@@ -20,4 +20,4 @@ class CreateSpecificationService {
     }
 }
 
-export { CreateSpecificationService }
+export { CreateSpecificationUseCase }
