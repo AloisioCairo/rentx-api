@@ -1,6 +1,6 @@
 // 1.	Capitulo 2 > Iniciando a API > Criando a API com NodeJS  > Criando repositóorio de categoria
-import { categoriesRoutes } from "routes/categories.routes";
-import { Category } from "../../model/category";
+// import { categoriesRoutes } from "routes/categories.routes";
+import { Category } from "../../model/Category";
 import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
 class CategoriesRepository implements ICategoriesRepository {
