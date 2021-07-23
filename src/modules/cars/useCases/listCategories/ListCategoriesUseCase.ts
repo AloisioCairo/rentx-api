@@ -1,5 +1,5 @@
 // 1.	Capitulo 2 > Iniciando a API > Continuação da aplicação > Refatorando a listagem de categoria
-import { Category } from "../../model/Category";
+import { Category } from "../../entities/Category";
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
 class ListCategoriesUseCase {

@@ -1,5 +1,5 @@
 // 1. Capitulo 2 > Iniciando a API > Continuação da aplicação > Criando repositório de especificação
-import { Specification } from "../model/Specification";
+import { Specification } from "../entities/Specification";
 
 interface ICreateSpecificationDTO {
     name: string;
