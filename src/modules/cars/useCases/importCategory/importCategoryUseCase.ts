@@ -1,7 +1,8 @@
 // Capitulo 2 > Iniciando a API > Trabalhando com upload  > Criando use case para importar categorias
 import fs from "fs"; // Capitulo 2 > Iniciando a API > Trabalhando com upload  > Conhecendo o conceito de stream
 import csvParse from "csv-parse";
-import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
+import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
+import { inject, injectable } from "tsyringe";
 
 // Capitulo 2 > Iniciando a API > Trabalhando com upload  > Lendo os dados do upload
 interface IImportCategory {
@@ -9,8 +10,11 @@ interface IImportCategory {
     description: string;
 }
 
+@injectable()
 class ImportCategoryUseCase {
-    constructor(private categoriesRepository: ICategoriesRepository) { }
+    constructor(
+        @inject("CategoriesRepository")
+        private categoriesRepository: ICategoriesRepository) { }
 
     loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
         return new Promise((resolve, reject) => {
@@ -48,10 +52,10 @@ class ImportCategoryUseCase {
         categories.map(async (category) => {
             const { name, description } = category;
 
-            const existCategory = this.categoriesRepository.findByName(name);
+            const existCategory = await this.categoriesRepository.findByName(name);
 
             if (!existCategory) {
-                this.categoriesRepository.create({
+                await this.categoriesRepository.create({
                     name,
                     description,
                 });

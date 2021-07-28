@@ -1,13 +1,17 @@
 // 1.	Capitulo 2 > Iniciando a API > Continuação da aplicação > Criando o service de especificação e separando em modulos
-import { ISpecificationRepository } from "../../repositories/ISpecificationRepository";
+import { inject, injectable } from "tsyringe";
+import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
 
 interface IRequest {
     name: string;
     description: string;
 }
 
+@injectable()
 class CreateSpecificationUseCase {
-    constructor(private specificationsRepository: ISpecificationRepository) { }
+    constructor(
+        @inject("SpecificationsRepository")
+        private specificationsRepository: ISpecificationsRepository) { }
 
     execute({ name, description }: IRequest): void {
         const specificationAlreadyExists = this.specificationsRepository.findByName(name);

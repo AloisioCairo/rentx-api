@@ -1,8 +1,8 @@
 // 1. Capitulo 2 > Iniciando a API > Continuação da aplicação > Criando repositório de especificação
-import { ICreateSpecificationDTO, ISpecificationRepository } from "../ISpecificationRepository";
+import { ICreateSpecificationDTO, ISpecificationsRepository } from "../ISpecificationsRepository";
 import { Specification } from '../../entities/Specification';
 
-class SpecificationsRepository implements ISpecificationRepository {
+class SpecificationsRepository implements ISpecificationsRepository {
     private specifications: Specification[];
 
     constructor() {

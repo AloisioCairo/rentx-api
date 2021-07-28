@@ -1,15 +1,17 @@
 // Capitulo 2 > Iniciando a API > Trabalhando com upload  > Criando use case para importar categorias
 import { Request, Response } from 'express';
-import { importCategoryController } from '.';
+import { container } from "tsyringe";
+
 import { ImportCategoryUseCase } from './importCategoryUseCase';
 
 class ImportCategoryController {
-    constructor(private importCategoryUseCase: ImportCategoryUseCase) { }
-
-    handle(request: Request, response: Response): Response {
+    async handle(request: Request, response: Response): Promise<Response> {
         const { file } = request;
 
-        this.importCategoryUseCase.execute(file);
+        // Capítulo 3 > Continuando a aplicação > Trabalhando com Banco de Dados > Refatorando as especificações
+        const importCategoryUseCase = container.resolve(ImportCategoryUseCase);
+
+        await importCategoryUseCase.execute(file);
         return response.send();
     }
 }
