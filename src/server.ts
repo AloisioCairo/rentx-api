@@ -1,7 +1,11 @@
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 import swaggerFile from "./swagger.json";
+
 import "./database"; // Importação do banco de dados
+
+import "./shared/container"; // Capítulo 3 > Continuando a aplicação > Trabalhando com Banco de Dados > Injeção de dependência
+
 import { router } from "./routes"
 
 const app = express();
