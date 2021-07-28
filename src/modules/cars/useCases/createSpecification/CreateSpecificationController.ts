@@ -13,8 +13,6 @@ class CreateSpecificationController {
         // Capítulo 3 > Continuando a aplicação > Trabalhando com Banco de Dados > Refatorando as especificações
         const createSpecificationUseCase = container.resolve(CreateSpecificationUseCase);
 
-        console.log('--------')
-
         await createSpecificationUseCase.execute({ name, description });
 
         return response.status(201).send();
