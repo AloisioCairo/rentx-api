@@ -2,8 +2,8 @@
     "type": "postgres",
     "port": "5432",
     "host": "localhost",
-    "username": "postgres",
-    "password": "postgres1004",
+    "username": "docker",
+    "password": "ignite",
     "database": "rentx",
     "migrations": [
         "./src/database/migrations/*.ts"
