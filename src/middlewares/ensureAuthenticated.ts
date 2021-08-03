@@ -29,6 +29,12 @@ export async function ensureAuthenticated(request: Request, response: Response, 
             throw new AppError("User does not existis!", 401);
         }
 
+        // Capítulo 3 > Continuando a aplicação > Avatar do usuário > Adicionando coluna de avatar
+        // Após o login, deixa salvo no "id" do "request" para utilizar em partes do sistema. É necessário criar o arquivo na pasta src/@types/express/index.ts
+        request.user = {
+            id: user_id,
+        };
+
         next();
     } catch {
         throw new AppError("Invalid token!", 401)
