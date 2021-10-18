@@ -1,9 +1,9 @@
 // Capítulo 3 > Continuando a aplicação > Trabalhando com Banco de Dados > Usuário > Autenticação nas rotas
 import { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
-import { AppError } from "../errors/AppError";
 
-import { UsersRepository } from "../modules/accounts/repositories/implementations/UsersRepository";
+import { AppError } from "@shared/errors/AppError";
+import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRepository";
 
 interface IPayload {
     sub: String;

@@ -1,8 +1,8 @@
 // 1.	Capitulo 2 > Iniciando a API > Continuação da aplicação > Criando o service de especificação e separando em modulos
-import { AppError } from "../../../../errors/AppError";
 import { inject, injectable } from "tsyringe";
 
-import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
+import { AppError } from "@shared/errors/AppError";
+import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
 
 interface IRequest {
     name: string;

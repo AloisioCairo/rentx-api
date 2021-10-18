@@ -1,8 +1,9 @@
 // Capítulo 4 > Testes e regras de negócio > Testes > Teste de autenticação do usuário
 
-import { AppError } from "../../../../errors/AppError";
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { UsersRepositoryInMemory } from "../../repositories/in-memory/UsersRepositoryInMemory";
+import { AppError } from "@shared/errors/AppError";
+import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
+import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
+
 import { CreateUserUseCase } from "../createUser/createUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase"
 

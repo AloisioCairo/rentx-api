@@ -4,9 +4,10 @@ import { inject, injectable } from "tsyringe";
 // Capítulo 3 > Continuando a aplicação > Trabalhando com Banco de Dados > Usuário > Criptografar senha
 import { hash } from "bcryptjs";
 
-import { IUsersRepository } from "../../repositories/IUsersRepository";
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { AppError } from "../../../../errors/AppError";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+
+import { AppError } from "@shared/errors/AppError";
+import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
 
 @injectable()
 class CreateUserUseCase {

@@ -1,7 +1,8 @@
 // 1. Capitulo 2 > Iniciando a API > Continuação da aplicação > Criando repositório de especificação
-import { ICreateSpecificationDTO, ISpecificationsRepository } from "../ISpecificationsRepository";
-import { Specification } from '../../entities/Specification';
 import { Repository, getRepository } from "typeorm";
+
+import { ICreateSpecificationDTO, ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
+import { Specification } from "../entities/Specification";
 
 class SpecificationsRepository implements ISpecificationsRepository {
     private repository: Repository<Specification>;

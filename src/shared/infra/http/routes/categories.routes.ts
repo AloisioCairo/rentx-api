@@ -2,10 +2,10 @@ import { request, response, Router } from "express";
 import multer from "multer";
 
 // Capítulo 3 > Continuando a aplicação > Trabalhando com Banco de Dados > Injeção de dependência
-import { CreateCategoryController } from "../modules/cars/useCases/createCategory/CreateCategoryController";
+import { CreateCategoryController } from "@modules/cars/useCases/createCategory/CreateCategoryController";
 
-import { ListCategoriesController } from "../modules/cars/useCases/listCategories/ListCategoriesController";
-import { ImportCategoryController } from "../modules/cars/useCases/importCategory/importCategoryController";
+import { ListCategoriesController } from "@modules/cars/useCases/listCategories/ListCategoriesController";
+import { ImportCategoryController } from "@modules/cars/useCases/importCategory/importCategoryController";
 
 const categoriesRoutes = Router();
 

@@ -1,8 +1,9 @@
 // Capítulo 3 > Continuando a aplicação > Avatar do usuário > Adicionando coluna de avatar
 import { inject, injectable } from "tsyringe";
 
-import { deleteFile } from "../../../../utils/file";
-import { IUsersRepository } from "../../repositories/IUsersRepository";
+import { deleteFile } from "@utils/file";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+
 
 interface IRequest {
     user_id: string;

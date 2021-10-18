@@ -1,8 +1,9 @@
 // Capitulo 2 > Iniciando a API > Trabalhando com upload  > Criando use case para importar categorias
 import fs from "fs"; // Capitulo 2 > Iniciando a API > Trabalhando com upload  > Conhecendo o conceito de stream
 import csvParse from "csv-parse";
-import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 import { inject, injectable } from "tsyringe";
+
+import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 
 // Capitulo 2 > Iniciando a API > Trabalhando com upload  > Lendo os dados do upload
 interface IImportCategory {
