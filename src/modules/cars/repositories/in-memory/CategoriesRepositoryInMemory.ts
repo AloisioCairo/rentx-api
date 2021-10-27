@@ -1,5 +1,6 @@
 // Capítulo 4 > Testes e regras de negócio > Testes > Teste de criação de categoria
-import { Category } from "../../entities/Category";
+// import { Category } from "../../entities/Category";
+import { Category } from "@modules/cars/infra/typeorm/entities/Category";
 import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
 class CategoriesRepositoryInMemory implements ICategoriesRepository {

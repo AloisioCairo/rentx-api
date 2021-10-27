@@ -1,7 +1,8 @@
 // Capítulo 4 > Testes e regras de negócio > Testes > Teste de autenticação do usuário
 
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { User } from "../../entities/User";
+// import { User } from "../../entities/User";
 import { IUsersRepository } from "../IUsersRepository";
 
 class UsersRepositoryInMemory implements IUsersRepository {
