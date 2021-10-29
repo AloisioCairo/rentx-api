@@ -10,9 +10,10 @@ interface IRequest {
     description: string;
 }
 
-@injectable()
+@injectable() // Informa que essa classe pode ser injetada por outra classe
 class CreateCategoryUseCase {
     constructor(
+        // A injeção de dependência "@inject()", substituiu substitui a instanciação "new" da classe
         @inject("CategoriesRepository")
         private categoriesRepository: ICategoriesRepository) {
     }
