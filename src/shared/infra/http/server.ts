@@ -4,13 +4,15 @@ import "express-async-errors" // Capítulo 3 > Continuando a aplicação > Traba
 
 import swaggerUi from "swagger-ui-express";
 
-import "@shared/infra/typeorm"; // Importação do banco de dados
+import createConnection from "@shared/infra/typeorm"; // Importação do banco de dados
 
 import "@shared/container"; // Capítulo 3 > Continuando a aplicação > Trabalhando com Banco de Dados > Injeção de dependência
 
 import { AppError } from "@shared/errors/AppError";
 import { router } from "./routes";
 import swaggerFile from "../../../swagger.json";
+
+createConnection();
 
 const app = express();
 
