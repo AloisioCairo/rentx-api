@@ -6,7 +6,7 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm'
 @Entity("specifications")
 class Specification {
     @PrimaryColumn()
-    id?: String;
+    id?: string;
 
     @Column()
     name: String;
