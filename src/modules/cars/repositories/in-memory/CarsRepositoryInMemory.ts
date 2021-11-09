@@ -6,10 +6,10 @@ import { ICarsRepository } from "../ICarsRepository";
 class CarsRepositoryInMemory implements ICarsRepository {
     cars: Car[] = [];
 
-    async create({ name, description, daily_rate, license_plate, fine_amount, brand, category_id }: ICreateCarDTO): Promise<Car> {
+    async create({ name, description, daily_rate, license_plate, fine_amount, brand, category_id, id }: ICreateCarDTO): Promise<Car> {
         const car = new Car();
 
-        Object.assign(car, { name, description, daily_rate, license_plate, fine_amount, brand, category_id });
+        Object.assign(car, { name, description, daily_rate, license_plate, fine_amount, brand, category_id, id });
 
         this.cars.push(car);
 
@@ -36,6 +36,11 @@ class CarsRepositoryInMemory implements ICarsRepository {
         });
 
         return allCarsAvailable;
+    }
+
+    // Capítulo 4 > Testes e regras de negócio > Carros > Caso de uso do cadastro de especificação para carro
+    async findById(id: string): Promise<Car> {
+        return this.cars.find((car) => car.id === id);
     }
 }
 
