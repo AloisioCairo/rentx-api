@@ -6,6 +6,7 @@ interface ICarsRepository {
     create(data: ICreateCarDTO): Promise<Car>;
     findByLicensePlate(license_plate: string): Promise<Car>; //	Capitulo 4 > Testes e regras de negócio > Carros > Continuando o caso de uso de carros
     findAvailable(brand?: string, category_id?: string, name?: string): Promise<Car[]>; // Capítulo 4 > Testes e regras de negócio > Carros > Listando carros disponíveis
+    findById(id: string): Promise<Car>; // Capítulo 4 > Testes e regras de negócio > Carros > Caso de uso do cadastro de especificação para carro
 }
 
 export { ICarsRepository }
