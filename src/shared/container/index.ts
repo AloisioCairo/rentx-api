@@ -1,6 +1,8 @@
 // Capítulo 3 > Continuando a aplicação > Trabalhando com Banco de Dados > Injeção de dependência
 import { container } from "tsyringe";
 
+import "@shared/container/providers"; // Capítulo 4 > Testes e regras de negócio > Aluguel > Criando controller   > 09:00 mm
+
 import { CategoriesRepository } from "@modules/cars/infra/typeorm/repositories/CategoriesRepository";
 import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 
@@ -13,6 +15,8 @@ import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { CarsRepository } from "@modules/cars/infra/typeorm/repositories/CarsRepository";
 import { ICarsImagesRepository } from "@modules/cars/repositories/ICarsImagesRepository";
 import { CarsImageRepository } from "@modules/cars/infra/typeorm/repositories/CarsImageRepository";
+import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
+import { RentalsRepository } from "@modules/rentals/infra/typeorm/repositories/RentalsRepository";
 
 container.registerSingleton<ICategoriesRepository>(
     "CategoriesRepository",
@@ -41,4 +45,10 @@ container.registerSingleton<ICarsRepository>(
 container.registerSingleton<ICarsImagesRepository>(
     "CarsImagesRepository",
     CarsImageRepository
+)
+
+// Capítulo 4 > Testes e regras de negócio > Aluguel > Criando controller
+container.registerSingleton<IRentalsRepository>(
+    "RentalsRepository",
+    RentalsRepository
 )
