@@ -6,7 +6,7 @@ import { AppError } from "@shared/errors/AppError";
 import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRepository";
 
 interface IPayload {
-    sub: String;
+    sub: string;
 }
 
 export async function ensureAuthenticated(request: Request, response: Response, next: NextFunction) {

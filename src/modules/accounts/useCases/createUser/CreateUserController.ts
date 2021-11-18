@@ -1,7 +1,7 @@
 // Capítulo 3 > Continuando a aplicação > Trabalhando com Banco de Dados > Usuário > Criando repositório de usuário
 import { container } from "tsyringe"
 import { Request, Response } from "express"
-import { CreateUserUseCase } from "./createUserUseCase"
+import { CreateUserUseCase } from "./CreateUserUseCase";
 
 
 // Capítulo 3 > Continuando a aplicação > Trabalhando com Banco de Dados > Usuário > Criando controller de usuário

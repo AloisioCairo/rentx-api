@@ -1,4 +1,6 @@
+import { Request, Response } from "express";
 import { container } from "tsyringe";
+
 import { CreateCarUseCase } from "./CreateCarUseCase";
 
 //	Capitulo 4 > Testes e regras de negócio > Carros > Estruturando a entidade de carros
