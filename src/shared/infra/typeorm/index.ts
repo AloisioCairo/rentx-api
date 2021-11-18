@@ -19,7 +19,8 @@ export default async (host = "database"): Promise<Connection> => {
 
     return createConnection(
         Object.assign(defaultOptions, {
-            host,
+            host: process.env.NODE_ENV === "test" ? "localhost" : host, // Capítulo 4 > Testes e regras de negócio > Testes de integração > Criando o primeiro teste de integração
+            database: process.env.NODE_ENV === "test" ? "rentx_test" : defaultOptions.database, // Capítulo 4 > Testes e regras de negócio > Testes de integração > Criando o primeiro teste de integração
         })
     );
 }
