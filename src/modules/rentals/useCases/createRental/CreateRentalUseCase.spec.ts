@@ -5,19 +5,21 @@ import { RentalRepositoryInMemory } from "@modules/rentals/repositories/in-memor
 import { AppError } from "@shared/errors/AppError";
 import { CreateRentalUseCase } from "./CreateRentalUseCase";
 import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/DayjsDateProvider";
+import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory";
 
 let createRentalUseCase: CreateRentalUseCase;
 let rentalsRepositoryImMemory: RentalRepositoryInMemory;
 let dayjsDateProvider: DayjsDateProvider;
-
+let carsRepositoryInMemory: CarsRepositoryInMemory; // Capítulo 5 > Trabalhanco com refresh_token e e-mail > Carro > Corrigindo o status de um carro
 
 describe("Create Rental", () => {
     const dayAdd24Hours = dayjs().add(1, "day").toDate(); // Armazena + 1 dia no dia atual
 
     beforeEach(() => {
         rentalsRepositoryImMemory = new RentalRepositoryInMemory();
+        carsRepositoryInMemory = new CarsRepositoryInMemory();
         dayjsDateProvider = new DayjsDateProvider();
-        createRentalUseCase = new CreateRentalUseCase(rentalsRepositoryImMemory, dayjsDateProvider);
+        createRentalUseCase = new CreateRentalUseCase(rentalsRepositoryImMemory, dayjsDateProvider, carsRepositoryInMemory);
     })
 
     it("should be able to create a new rental", async () => {

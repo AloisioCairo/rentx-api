@@ -4,6 +4,7 @@ import { Car } from "@modules/cars/infra/typeorm/entities/Car";
 import { ICarsRepository } from "../ICarsRepository";
 
 class CarsRepositoryInMemory implements ICarsRepository {
+
     cars: Car[] = [];
 
     async create({ name, description, daily_rate, license_plate, fine_amount, brand, category_id, id }: ICreateCarDTO): Promise<Car> {
@@ -41,6 +42,12 @@ class CarsRepositoryInMemory implements ICarsRepository {
     // Capítulo 4 > Testes e regras de negócio > Carros > Caso de uso do cadastro de especificação para carro
     async findById(id: string): Promise<Car> {
         return this.cars.find((car) => car.id === id);
+    }
+
+    // Capítulo 5 > Trabalhanco com refresh_token e e-mail > Carro > Corrigindo o status de um carro
+    async updateAvailable(id: string, available: boolean): Promise<void> {
+        const findIndex = this.cars.findIndex((car) => car.id === id);
+        this.cars[findIndex].available = available;
     }
 }
 

@@ -52,6 +52,14 @@ class CarsRepository implements ICarsRepository {
         const car = await this.repository.findOne(id);
         return car;
     }
+
+    // Capítulo 5 > Trabalhanco com refresh_token e e-mail > Carro > Corrigindo o status de um carro
+    async updateAvailable(id: string, available: boolean): Promise<void> {
+        await this.repository.createQueryBuilder().update()
+            .set({ available }).where("id = :id")
+            .setParameters({ id })
+            .execute();
+    }
 }
 
 export { CarsRepository } 
