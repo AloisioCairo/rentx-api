@@ -19,6 +19,7 @@ describe("Create Category Controller", () => {
         const id = uuid();
         const password = await hash("admin", 8);
 
+        // Necessário somente pq para acessar as rotas o usuário tem que ter o nível de administrador
         await connection.query(`INSERT INTO users (id, name, email, password, "isAdmin", created_at, driver_license)
     VALUES ('${id}', 'admin', 'admin@rentex.com.br', '${password}', true, 'now()', 'XXXXXX')`);
     });
