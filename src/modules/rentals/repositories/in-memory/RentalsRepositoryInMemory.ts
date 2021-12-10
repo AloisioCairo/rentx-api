@@ -4,6 +4,7 @@ import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalsRepository } from "../IRentalsRepository";
 
 class RentalRepositoryInMemory implements IRentalsRepository {
+
     rentals: Rental[] = [];
 
     async findOpenRentalByCar(car_id: string): Promise<Rental> {
@@ -28,6 +29,16 @@ class RentalRepositoryInMemory implements IRentalsRepository {
         this.rentals.push(rental);
 
         return rental;
+    }
+
+    // Capítulo 5 > Trabalhando com refresh_token e e-mail > Carro > Correção dos testes
+    async findById(id: string): Promise<Rental> {
+        return this.rentals.find((rental) => rental.id === id);
+    }
+
+    // Capítulo 5 > Trabalhando com refresh_token e e-mail > Carro > Correção dos testes
+    async findByUser(user_id: string): Promise<Rental[]> {
+        return this.rentals.filter((rental) => rental.user_id === user_id);
     }
 }
 

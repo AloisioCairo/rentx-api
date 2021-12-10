@@ -13,22 +13,21 @@ describe("Create Car", () => {
     })
 
     it("should be able to create a new car", async () => {
-    const car = await createCarUseCase.execute({
-        name: "Name Car",
-        description: "Description Car",
-        daily_rate: 100,
-        license_plate: "1234",
-        fine_amount: 60,
-        brand: "Brand",
-        category_id: "category"
+        const car = await createCarUseCase.execute({
+            name: "Name Car",
+            description: "Description Car",
+            daily_rate: 100,
+            license_plate: "1234",
+            fine_amount: 60,
+            brand: "Brand",
+            category_id: "category"
+        });
+
+        expect(car).toHaveProperty("id");
     });
 
-    expect(car).toHaveProperty("id");
-});
-
-//	Capitulo 4 > Testes e regras de negócio > Carros > Continuando o caso de uso de carros
-it("should not be able to create a car with exists license plate", () => {
-    expect(async () => {
+    //	Capitulo 4 > Testes e regras de negócio > Carros > Continuando o caso de uso de carros
+    it("should not be able to create a car with exists license plate", async () => {
         await createCarUseCase.execute({
             name: "Car 1",
             description: "Description Car",
@@ -39,7 +38,7 @@ it("should not be able to create a car with exists license plate", () => {
             category_id: "category"
         });
 
-        await createCarUseCase.execute({
+        await expect(createCarUseCase.execute({
             name: "Car 2",
             description: "Description Car",
             daily_rate: 100,
@@ -47,22 +46,22 @@ it("should not be able to create a car with exists license plate", () => {
             fine_amount: 60,
             brand: "Brand",
             category_id: "category"
+        })
+        ).rejects.toEqual(new AppError("Car already exists!"));
+    });
+
+    //	Capitulo 4 > Testes e regras de negócio > Carros > Continuando o caso de uso de carros
+    it("should no be able to create a car with available true by default", async () => {
+        const car = await createCarUseCase.execute({
+            name: "Car available",
+            description: "Description Car",
+            daily_rate: 100,
+            license_plate: "ABCD-1234",
+            fine_amount: 60,
+            brand: "Brand",
+            category_id: "category"
         });
-    }).rejects.toBeInstanceOf(AppError);
+
+        expect(car.available).toBe(true);
+    });
 });
-
-//	Capitulo 4 > Testes e regras de negócio > Carros > Continuando o caso de uso de carros
-it("should no be able to create a car with available true by default", async () => {
-    const car = await createCarUseCase.execute({
-        name: "Car available",
-        description: "Description Car",
-        daily_rate: 100,
-        license_plate: "ABCD-1234",
-        fine_amount: 60,
-        brand: "Brand",
-        category_id: "category"
-    });
-
-    expect(car.available).toBe(true);
-        });
-    });
