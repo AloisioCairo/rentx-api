@@ -30,6 +30,11 @@ class DayjsDateProvider implements IDateProvider {
 
         return dayjs(end_date_utc).diff(start_date_utc, "days");
     }
+
+    // Capítulo 5 > Trabalhanco com refresh_token e e-mail > Autenticação > Refatorando autenticação do usuário
+    addDays(days: number): Date {
+        return dayjs().add(days, "days").toDate();
+    }
 }
 
 export { DayjsDateProvider }
