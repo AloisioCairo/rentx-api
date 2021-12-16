@@ -7,7 +7,6 @@ import { IDateProvider } from "../IDateProvider";
 dayjs.extend(utc);
 
 class DayjsDateProvider implements IDateProvider {
-
     compareInHours(start_date: Date, end_date: Date): number {
         const end_date_utc = this.convertToUTC(end_date);
         const start_date_utc = this.convertToUTC(start_date);
@@ -34,6 +33,11 @@ class DayjsDateProvider implements IDateProvider {
     // Capítulo 5 > Trabalhanco com refresh_token e e-mail > Autenticação > Refatorando autenticação do usuário
     addDays(days: number): Date {
         return dayjs().add(days, "days").toDate();
+    }
+
+    // Capítulo 5 > Trabalhando com refreshtoken e e-mail > Recuperação de senha > Criando caso de uso
+    addHoures(hours: number): Date {
+        return dayjs().add(hours, "hours").toDate();
     }
 }
 
