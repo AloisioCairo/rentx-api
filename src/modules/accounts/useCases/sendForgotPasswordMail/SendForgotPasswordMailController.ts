@@ -8,8 +8,6 @@ class SendForgotPasswordMailController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { email } = request.body;
 
-        console.log("1111")
-
         const sendForgotPasswordMailUseCase = container.resolve(SendForgotPasswordMailUseCase);
 
         await sendForgotPasswordMailUseCase.execute(email);
