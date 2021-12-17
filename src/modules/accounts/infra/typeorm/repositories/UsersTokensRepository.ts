@@ -32,6 +32,13 @@ class UsersTokensRepository implements IUsersTokensRepository {
     async deleteById(id: string): Promise<void> {
         await this.repository.delete(id);
     }
+
+    // Capítulo 5 > Trabalhando com refreshtoken e e-mail > Recuperação de senha > Caso de uso de reset de senha
+    async findByRefreshToken(refresh_token: string): Promise<UsersTokens> {
+        const usersToken = await this.repository.findOne({ refresh_token });
+
+        return usersToken;
+    }
 }
 
 export { UsersTokensRepository }

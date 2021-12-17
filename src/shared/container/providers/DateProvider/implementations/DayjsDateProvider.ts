@@ -39,6 +39,11 @@ class DayjsDateProvider implements IDateProvider {
     addHoures(hours: number): Date {
         return dayjs().add(hours, "hours").toDate();
     }
+
+    // Capítulo 5 > Trabalhando com refreshtoken e e-mail > Recuperação de senha > Caso de uso de reset de senha
+    compareIfBefore(start_date: Date, end_date: Date): boolean {
+        return dayjs(start_date).isBefore(end_date);
+    }
 }
 
 export { DayjsDateProvider }
