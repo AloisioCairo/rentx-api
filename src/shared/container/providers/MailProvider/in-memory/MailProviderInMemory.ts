@@ -1,0 +1,12 @@
+//Capítulo 5 > Trabalhando com refreshtoken e e - mail > Testes > Testando o envio de e-mail
+import { IMailProvider } from "../IMailProvider";
+
+class MailProviderInMemory implements IMailProvider {
+    private message: any[] = [];
+
+    async sendEmail(to: string, subject: string, variables: any, path: string): Promise<void> {
+        this.message.push({ to, subject, variables, path });
+    }
+}
+
+export { MailProviderInMemory }
