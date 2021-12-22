@@ -5,6 +5,8 @@ import { IDateProvider } from "./DateProvider/IDateProvider";
 import { DayjsDateProvider } from "./DateProvider/implementations/DayjsDateProvider";
 import { IMailProvider } from "./MailProvider/IMailProvider";
 import { EtherealMailProvider } from "./MailProvider/Implementations/EtherealMailProvider";
+import { LocalStorageProvider } from "./StorageProvider/implementations/LocalStorageProvider";
+import { IStorageProvider } from "./StorageProvider/IStorageProvider";
 
 container.registerSingleton<IDateProvider>(
     "DayjsDateProvider",
@@ -15,4 +17,10 @@ container.registerSingleton<IDateProvider>(
 container.registerInstance<IMailProvider>(
     "EtherealMailProvider",
     new EtherealMailProvider()
+)
+
+// Capítulo 6 > Deploy > Configuração AWS > Provider de Upload
+container.registerSingleton<IStorageProvider>(
+    "StorageProvider",
+    LocalStorageProvider
 )

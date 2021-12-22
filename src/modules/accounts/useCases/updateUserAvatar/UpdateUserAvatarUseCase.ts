@@ -1,9 +1,8 @@
 // Capítulo 3 > Continuando a aplicação > Avatar do usuário > Adicionando coluna de avatar
 import { inject, injectable } from "tsyringe";
 
-import { deleteFile } from "@utils/file";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
-
+import { IStorageProvider } from "@shared/container/providers/StorageProvider/IStorageProvider";
 
 interface IRequest {
     user_id: string;
@@ -14,7 +13,9 @@ interface IRequest {
 class UpdateUserAvatarUseCase {
     constructor(
         @inject("UsersRepository")
-        private usersRepository: IUsersRepository
+        private usersRepository: IUsersRepository,
+        @inject("StorageProvider")
+        private storageProvider: IStorageProvider
     ) { }
 
     async execute({ user_id, avatar_file }: IRequest): Promise<void> {
@@ -22,8 +23,10 @@ class UpdateUserAvatarUseCase {
 
         // Capítulo 3 > Continuando a aplicação > Avatar do usuário > Remover arquivo de avatar existente
         if (user.avatar) {
-            await deleteFile(`./tmp/avatar/${user.avatar}`);
+            await this.storageProvider.delete(user.avatar, "avatar");
         }
+
+        await this.storageProvider.save(avatar_file, "avatar");
 
         user.avatar = avatar_file;
 
