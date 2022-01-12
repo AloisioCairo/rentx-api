@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors" // Capítulo 3 > Continuando a aplicação > Trabalhando com Banco de Dados > Usuário > Tratamento de exceções
 
