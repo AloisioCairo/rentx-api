@@ -12,6 +12,7 @@ import "@shared/container"; // Capítulo 3 > Continuando a aplicação > Trabalh
 import { AppError } from "@shared/errors/AppError";
 import { router } from "./routes";
 import swaggerFile from "../../../swagger.json";
+import upload from "@config/upload";
 
 createConnection();
 
@@ -21,6 +22,11 @@ app.use(express.json());
 
 // Rota que apresenta a documentação da API
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
+// Capítulo 6 > Deploy > Configuração AWS > Criando URL de acesso do avatar
+// Necessário para a aplicação saber que toda vez que na URL tiver "/avatar", é para acessar a pasta "avatar"
+app.use("/avatar", express.static(`${upload.tmpFolder}/avatar`));
+app.use("/cars", express.static(`${upload.tmpFolder}/cars`));
 
 app.use(router);
 
