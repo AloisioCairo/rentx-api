@@ -13,14 +13,26 @@ import { Connection, createConnection, getConnectionOptions } from 'typeorm';
 //     });
 // });
 
+//  Comentado para a conexão do banco de dados funciona na AWS
 // Capítulo 4 > Testes e regras de negócio > Carros > Criando seed de usuário
-export default async (host = "database"): Promise<Connection> => {
+// export default async (host = "database"): Promise<Connection> => {
+//     const defaultOptions = await getConnectionOptions();
+
+//     return createConnection(
+//         Object.assign(defaultOptions, {
+//             host: process.env.NODE_ENV === "test" ? "localhost" : host, // Capítulo 4 > Testes e regras de negócio > Testes de integração > Criando o primeiro teste de integração
+//             database: process.env.NODE_ENV === "test" ? "rentx_test" : defaultOptions.database, // Capítulo 4 > Testes e regras de negócio > Testes de integração > Criando o primeiro teste de integração
+//         })
+//     );
+// }
+
+// Capítulo 6 > Deploy > Deploy > Alterando a configuração do banco de dados
+export default async (): Promise<Connection> => {
     const defaultOptions = await getConnectionOptions();
 
-    return createConnection(
+    return createConnection( 
         Object.assign(defaultOptions, {
-            host: process.env.NODE_ENV === "test" ? "localhost" : host, // Capítulo 4 > Testes e regras de negócio > Testes de integração > Criando o primeiro teste de integração
-            database: process.env.NODE_ENV === "test" ? "rentx_test" : defaultOptions.database, // Capítulo 4 > Testes e regras de negócio > Testes de integração > Criando o primeiro teste de integração
+            database: process.env.NODE_ENV === "test" ? "rentx_test" : defaultOptions.database,
         })
     );
 }
