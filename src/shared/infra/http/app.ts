@@ -11,12 +11,16 @@ import "@shared/container"; // Capítulo 3 > Continuando a aplicação > Trabalh
 
 import { AppError } from "@shared/errors/AppError";
 import { router } from "./routes";
+import rateLimiter from "@shared/infra/http/middlewares/rateLimiter";
+
 import swaggerFile from "../../../swagger.json";
 import upload from "@config/upload";
 
 createConnection();
 
 const app = express();
+
+app.use(rateLimiter);
 
 app.use(express.json());
 
